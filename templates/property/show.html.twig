@@ -5,21 +5,54 @@
 {% block body %}
     <div class="jumbotron">
         <div class="container">
+
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            {% if not form.vars.valid %}
+                <div class="alert alert-danger">
+                    Please make sure all fields of the contact form are filled in correctly!
+                </div>
+            {% endif %}
+
             <div class="row">
                 <div class="col-md-8">
                     {% if property.filename %}
-                        <img src="{{ vich_uploader_asset(property, 'imageFile') | imagine_filter('medium')}}" alt="property-image-medium" class="card-img-top">
+                        <img alt="property-image-medium"
+                             class="card-img-top" src="{{ vich_uploader_asset(property, 'imageFile') | imagine_filter('medium') }}"
+                             style="border-radius: 3px; filter: saturate(75%) drop-shadow(0 0 0.75rem #999);">
                     {% else %}
-                        <img src="{{ '/images/properties/empty.jpg' | imagine_filter('medium')}}" alt="property-image-medium" class="card-img-top">
+                        <img src="{{ '/images/properties/empty.jpg' | imagine_filter('medium')}}" alt="property-image-medium" class="card-img-top" style="border-radius: 3px">
                     {% endif %}
                 </div>
                 <div class="col-md-4">
-                    <h1>{{ property.title }}</h1>
-                    <h2>{{ property.rooms }} pieces - {{ property.surface }} m²</h2>
-                    <div class="text-primary" style="font-size: 4rem; font-weight: 300">{{ property.formattedPrice }}
+                    <h1 class="text-success">{{ property.title }}</h1>
+                    <h2 class="text-secondary">{{ property.rooms }} rooms - {{ property.surface }} m²</h2>
+                    <div class="text-danger" style="font-size: 4rem; font-weight: 300">{{ property.formattedPrice }}
                         $
                     </div>
-                    <a href="" class="btn btn-primary">Contact the agency</a>
+                    <a href="#" class="btn btn-success">Contact the agency</a>
+                    <div id="contactForm" class="mt-4">
+                        {{ form_start(form) }}
+                            <div class="row">
+                                <div class="col">{{ form_row(form.firstname) }}</div>
+                                <div class="col">{{ form_row(form.lastname) }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">{{ form_row(form.phone) }}</div>
+                                <div class="col">{{ form_row(form.email) }}</div>
+                            </div>
+                            {{ form_rest(form) }}
+                            <div class="form-group">
+                                <button class="btn btn-success">
+                                    Send
+                                </button>
+                            </div>
+                        {{ form_end(form) }}
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,7 +65,7 @@
 
         <div class="row">
             <div class="col-md-8">
-                <h2>Caracteristics</h2>
+                <h2 class="text-secondary">Caracteristics</h2>
                 <table class="table table-striped">
                     <tr>
                         <td>Living space</td>
@@ -57,7 +90,7 @@
                 </table>
             </div>
             <div class="col-md-4">
-                <h2>Specifities</h2>
+                <h2 class="text-secondary">Specifities</h2>
                 <ul class="list-group">
                     {% for option in property.options %}
                         <li class="list-group-item">{{ option.name }}</li>

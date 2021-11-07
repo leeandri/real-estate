@@ -1,0 +1,61 @@
+<h4 style="color: #999;">
+    {{ contact.firstname }} {{ contact.lastname }}
+</h4>
+
+<p>
+    {{ contact.message }}
+</p>
+<hr/>
+<ul>
+        <li>{{ contact.phone }}</li>
+        <li>{{ contact.email }}</li>
+</ul>
+<a href="{{ url('property.show',{id: contact.property.id, slug: contact.property.slug}) }}"></a>
+
+
+
+{#<mjml>#}
+{#    <mj-head>#}
+{#        <mj-title>Say hello to RealEstate</mj-title>#}
+{#        <mj-font name="Alice" href="https://fonts.googleapis.com/css?family=Alice"></mj-font>#}
+{#        <mj-font name="Roboto" href="https://fonts.googleapis.com/css?family=Roboto:400,700"></mj-font>#}
+{#        <mj-attributes>#}
+{#            <mj-all font-family="Roboto, Helvetica, Arial, sans-serif" padding="0px"></mj-all>#}
+{#            <mj-text font-weight="400" font-size="14px" color="#000000" line-height="21px"></mj-text>#}
+{#        </mj-attributes>#}
+{#    </mj-head>#}
+{#    <mj-body background-color="#EAE8E5">#}
+{#        <mj-section padding="20px 0 0 0">#}
+{#            <mj-column>#}
+{#                <mj-image src="http://nimus.de/share/tpl-realestate/box-head.png" alt="" align="center" border="none" padding="0px"></mj-image>#}
+{#            </mj-column>#}
+{#        </mj-section>#}
+{#        <mj-section padding-top="40px" background-color="#FFFFFF">#}
+{#            <mj-column width="570px">#}
+{#                <mj-text align="left" padding="0 20px" color="#1D83A8" font-size="36px" line-height="40px" font-family="Alice, Helvetica, Arial, sans-serif">#}
+{#                    For Estate Agency</mj-text>#}
+{#                <mj-text align="left" padding="0 20px"><strong><span style="font-size: 40px;">⚊</span></strong><br /><br /></mj-text>#}
+{#            </mj-column>#}
+{#        </mj-section>#}
+{#        <mj-section background-color="#FFFFFF">#}
+{#            <mj-column>#}
+{#                <mj-text align="left" padding="0 20px 30px 20px"><strong>{{ contact.firstname }} {{ contact.lastname }}</strong><br/>{{ contact.phone }} {{ contact.email }}</mj-text>#}
+{#            </mj-column>#}
+{#        </mj-section>#}
+{#        <mj-section background-url="{{ vich_uploader_asset(contact.property, 'imageFile') | imagine_filter('medium') }}" vertical-align="middle" background-size="cover" padding="30px" background-repeat="no-repeat">#}
+{#            <mj-column vertical-align="middle" width="60%">#}
+{#                <mj-text align="center" padding="40px 30px" color="#FFFFFF" font-size="42px" line-height="48px" font-family="Alice, Helvetica, Arial, sans-serif">{{ contact.property.title }}</mj-text>#}
+{#            </mj-column>#}
+{#            <mj-column vertical-align="middle" width="40%">#}
+
+{#                <mj-button background-color="#F44E3C" color="white" padding="20px 20px 30px 20px" border-radius="20px">#}
+{#                    <a style="text-decoration: none; color:#FFF" href="{{ url('property.show',{id: contact.property.id, slug: contact.property.slug}) }}">See it</a></mj-button>#}
+{#            </mj-column>#}
+{#        </mj-section>#}
+{#        <mj-section padding="0 20px" background-color="#FFFFFF">#}
+{#            <mj-column>#}
+{#                <mj-text align="center" padding="40px">{{ contact.message }}</mj-text>#}
+{#            </mj-column>#}
+{#        </mj-section>#}
+{#    </mj-body>#}
+{#</mjml>#}
