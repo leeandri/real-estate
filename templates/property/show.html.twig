@@ -34,8 +34,8 @@
                     <div class="text-danger" style="font-size: 4rem; font-weight: 300">{{ property.formattedPrice }}
                         $
                     </div>
-                    <a href="#" class="btn btn-success">Contact the agency</a>
-                    <div id="contactForm" class="mt-4">
+                    <a href="#" class="btn btn-success" id="contactButton">Contact the agency</a>
+                    <div id="contactForm" class="mt-4" {% if not form.vars.submitted %}style="display: none"{% endif %}>
                         {{ form_start(form) }}
                             <div class="row">
                                 <div class="col">{{ form_row(form.firstname) }}</div>
@@ -65,7 +65,7 @@
 
         <div class="row">
             <div class="col-md-8">
-                <h2 class="text-secondary">Caracteristics</h2>
+                <h2 class="text-secondary">Characteristics</h2>
                 <table class="table table-striped">
                     <tr>
                         <td>Living space</td>
@@ -90,7 +90,7 @@
                 </table>
             </div>
             <div class="col-md-4">
-                <h2 class="text-secondary">Specifities</h2>
+                <h2 class="text-secondary">Specificities</h2>
                 <ul class="list-group">
                     {% for option in property.options %}
                         <li class="list-group-item">{{ option.name }}</li>
